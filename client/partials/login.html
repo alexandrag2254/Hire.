@@ -1,0 +1,130 @@
+<style type="text/css">
+	.row {
+	padding-left:30px;
+	}
+
+	input{
+		line-height: 30px;
+		width:200px;
+		margin-bottom: 20px;
+	}
+	button {
+		color:white;
+		background-color: #7F7F7F;
+		margin-left: 180px;
+	}
+	body{
+		font-family: "Arvo";
+		font-weight: 300;
+		background-image: url(../img/wood.jpg);
+	  	background-position: center center;
+	 	background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	 	background-size: cover;
+	 	background-color:#464646;
+	 	margin: 0;
+	}
+
+		#register {
+		width:400px;
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 15%;
+		margin-top:0.5%;
+		text-align: center;
+		border-radius: 13px;
+		padding:25px;
+  		background-color: #DADADA;
+    	background-color: rgba(40,40,40,0.2);
+	}
+	#login {
+		width:400px;
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 200px;
+		text-align: center;
+		margin-top: 0.5%;
+		border-radius: 13px;
+		padding:25px;
+  		background-color: #DADADA;
+    	background-color: rgba(34,34,34,0.2);
+	}
+</style>
+
+<div ng-controller="loginController">
+	<div class="input-field col s12 m6 l3">
+
+	<div class='row' id='register'>
+		<h3 class="center">Register</h3>
+
+			<h4 ng-bind="errors_register" style="color:red;"></h4>
+
+	      <div class="input-field col s6">
+			<i class="material-icons prefix">account_circle</i>
+			<input placeholder="Username" id='uname' type="text" ng-model="new_friend.username">
+		</div>
+
+		   <div class="input-field col s6">
+		   	<i class="material-icons prefix">email</i>
+			<input placeholder="Email" id='unemail' type="text" ng-model="new_friend.email" ng-minlength="5" required>
+		</div>
+
+		   <div class="input-field col s6">
+		   	<i class="material-icons prefix">domain</i>
+			<input placeholder="Address" id='uaddress' type="text" ng-model="new_friend.address" ng-minlength="5" required>
+		</div>
+
+		   <div class="input-field col s6">
+		   	<i class="material-icons prefix">contact_phone</i>
+			<input placeholder="Phone #" id='uphone' type="text" ng-model="new_friend.number" ng-minlength="7" required >
+		</div>
+
+		   <div class="input-field col s6">
+			<i class="material-icons prefix">lock</i>
+			<input placeholder="Password" id='upass' type="password" ng-model="new_friend.password" ng-minlength="5" required>
+			
+		</div>
+
+		   <div class="input-field col s6">
+			<i class="material-icons prefix">lock</i>
+			<input placeholder="Confirm Password" id='upass' type="password" ng-model="new_friend.password2" ng-minlength="5" required >
+		</div>
+
+		   <div class="input-field col s6">
+			<button ng-click="Register()" class="btn waves-effect waves-light green" type="submit" name="action"><i class="material-icons left">send</i></button>
+		</div>
+
+	</div>
+		
+
+	<div class="row" id="login">
+
+			<h3 class="center">Login</h3>
+
+			<h4 ng-bind="errors_login" style="color:red;"></h4>
+
+		<div class="input-field col s12 m6 l3">	
+
+			<i class="material-icons prefix">account_circle</i>
+			<input placeholder="Username" id='uname' type="text" ng-model="new_friend.username_login">
+		</div>
+
+		<div class="input-field col s12 m6 l3">
+			<i class="material-icons prefix">lock</i>
+			<input id='upass' placeholder="Password" type="password" ng-model="new_friend.password_login">
+		</div>
+
+		<div class="input-field col s12 m6 l3">
+			<button ng-click="Login()" class="btn waves-effect waves-light green" type="submit" name="action"><i class="material-icons left">send</i></button>
+		</div>
+	</div><!--ends row -->
+
+
+</div>
+
+</div> <!--end of login controller -->
+
+<script type="text/javascript">
+	$('nav').show();
+
+</script>

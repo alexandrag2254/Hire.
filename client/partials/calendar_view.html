@@ -1,0 +1,83 @@
+	<!-- for calendar library -->
+	<link href='../calendar_files/fullcalendar.css' rel='stylesheet' />
+	<link href='../calendar_files/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<script src='../calendar_files/lib/moment.min.js'></script>
+	 <script src='../calendar_files/lib/jquery.min.js'></script>
+	 <script src='../calendar_files/fullcalendar.min.js'></script>
+<style type="text/css">
+
+	#calendars{
+		text-align: center;
+		margin-top: 20px;
+		margin-left: 50px;
+		width:42%;
+		display: inline-block;
+		vertical-align: top;
+		border:4px solid gray;
+		padding:10px;
+		border-radius: 10px;
+	}
+	h2{
+		margin-bottom: 20px;
+	}
+	button{
+		margin-right: 10px;
+	}
+	#titles{
+		width:35%;
+		text-align: center;
+		display: inline-block;
+		vertical-align: top;
+	}
+	#contractor_reviews{
+		width:90%;
+		margin-left: 50px;
+		margin-top: 70px;
+		text-align: center;
+	}
+	table, th {
+		text-align: center;
+	}
+
+</style>
+
+
+<div ng-controller="Calendar" class="container-fluid" id="calendar">
+
+	<div id="titles">
+		<h2> {{contractor.username}}'s Availablity </h2>
+		<p><em>** red blocks indicate inavailability **</em></p>
+
+		<button class="btn btn-primary"><a style="color:white;" href="#/add_appointment/{{contractor._id}}">Add Appointment</a></button>
+		<button class="btn btn-default"><a href="#/add_review/{{contractor._id}}">Add Review</a></button><br>
+
+		<div id="contractor_reviews">
+			<h3>{{contractor.username}}'s Reviews</h3>
+			<table class='table table-hover'>
+				<thead>
+					<th>Review</th>
+					<th>Rating</th>
+					<th>Date</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="review in contractor_reviews | orderBy: 'created_at'">
+						<td>{{review.review}}</td>
+						<td>{{review.rating}}</td>
+						<td ng-bind="review.created_at | date: 'longDate'"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+ 	</div>
+
+
+	<!-- calendar -->
+	<div id="calendars">
+
+	</div>
+
+</div>
+
+
+
+

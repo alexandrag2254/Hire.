@@ -1,0 +1,96 @@
+<style type="text/css">
+	.row {
+		padding-left: 70px;
+	}
+	#services {
+		width:30%;
+		display: inline-block;
+		/*background-color: gray;*/
+		vertical-align: top;
+	}
+	#reviews {
+		width:30%;
+		display: inline-block;
+		vertical-align: top;
+		/*background-color: gray;*/
+		padding-left: 10px;
+	}
+	#profile {
+		width:30%;
+		display: inline-block;
+		vertical-align: top;
+		/*background-color: gray;*/
+		padding-left: 10px;
+	}
+	#basic_info{
+/*		width:200px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: gray;*/
+		text-align: center;
+	}
+	#profile_header {
+		text-align: center;
+	}
+	h3{
+		text-align: center;
+	}
+
+</style>
+
+<div ng-controller="FriendsController">
+
+	<div id="profile_header">
+		<h1>Profile Page</h1>
+<!-- 		<input type="filepicker-dragdrop" data-fp-apikey="AZA72L1ZKQFORPzNlGsKlz" ng-model="new_friend.url" ng-change="fpadd()"> -->
+		</div>
+		<div ng-Controller="Profile">
+
+	<div id="profile_page">
+
+
+		<div id="basic_info">
+			<h2>{{users.username}}</h2>
+<!-- 			<img  class="responsive-img" src="{{users.url}}"> -->
+			<h3>Your Basic Info</h3>
+			<p>{{users.email}}</p>
+			<p>{{users.address}}</p>
+			<p>{{users.number}}</p>
+			<p>{{users.details}}</p>
+		</div>
+
+		<div id="services">
+			<form>
+				<h3>Add a Service <h4 ng-bind="errors_service" style="color:red;"></h4> <input type="text" class="form-control" ng-model="profile.service"></h3>
+				Details <textarea ng-model="profile.details" class="form-control"></textarea><br>
+				<button class="btn btn-primary" ng-click="addService()" >Add</button>
+			</form>
+		</div>
+
+		<div id="profile">
+			<h3>Your Services</h3>
+			<p ng-repeat="service in services_list"><strong>{{service.service}}</strong>- {{service.details}}</p>
+		</div>
+	
+		<div id="reviews">
+			<h3>Your Reviews</h3>
+			<table class='table table-hover'>
+				<thead>
+					<th>Review</th>
+					<th>Rating</th>
+					<th>Date</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="review in reviews | orderBy: 'created_at'">
+						<td>{{review.review}}</td>
+						<td>{{review.rating}}</td>
+						<td ng-bind="review.created_at | date: 'longDate'"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>

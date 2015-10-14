@@ -1,0 +1,63 @@
+
+<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=Arvo:400,100,200,300,500,600,700,800,900);
+	body {
+		font-family: "Arvo";
+		font-weight: 300;
+		background-image: url(../img/six.jpg);
+	  	background-position: center center;
+	 	background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	 	background-size: cover;
+	 	background-color:#464646;
+	 	margin: 0;
+	}
+
+	p {
+		color: white;
+		font-size: 36px;
+		width: 690px;
+		text-align: center;
+		/*margin-left: 25%;*/
+		margin-left: auto;
+		margin-right: auto; 
+		margin-top: 3%;
+		border-radius: 13px;
+		padding:45px;
+  		background-color: #fff;
+    	background-color: rgba(34,34,34,0.5);
+	}
+
+	button {
+		/*background-color: rgba(0, 0, 0, 0.6);*/
+		background-color: Transparent;
+		width:90px;
+		height:45px;
+		float:right;
+		margin-right: 25px;
+		margin-top: 2%;
+		background: rgba(0, 0, 255, 0.5);
+	    cursor:pointer;
+	}
+	h1{
+		color:white;
+		font-size:75px;
+		width:100px;
+		padding-left:30px;
+	}
+</style>
+
+
+<div ng-controller="welcomeController" class="container-fluid">
+	<body>
+		<h1>Hire.</h1>
+
+		<button class="btn btn-default btn-lg active" ng-click="Login()"> Login </button>
+			<p> Discover and Connect with fellow skilled users! </p>
+	</body>
+</div>
+
+<script type="text/javascript">
+	$('nav').hide();
+
+</script>

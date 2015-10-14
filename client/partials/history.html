@@ -1,0 +1,115 @@
+<style type="text/css">
+
+	html{
+		margin:0 auto;
+		width:100%;
+	}
+
+	table {
+		margin-left: 2.5%;
+		display: inline-block;
+		text-align: center;
+	}
+
+	table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding:15px;
+}
+
+#search {
+	width:200px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+</style>
+
+<!-- for the tables -->
+<style type="text/css">
+		table.example3 {background-color:transparent;border-collapse:collapse;width:100%;}
+		table.example3 th, table.example3 td {text-align:center;border:1px solid black;padding:5px;}
+		table.example3 th {background-color:AntiqueWhite;}
+		table.example3 td:first-child {width:35%;}
+	</style>
+
+
+<div ng-controller="historyController">
+	<!-- three tables -->
+
+	<!-- Tasks -->
+	<table style="width:30%" class="example3">
+		<caption><h2>Tasks</h2></caption>
+		<caption>
+			<div class="input-field col s12" id="search">
+				<input id="search" type="text" class="form-control" placeholder='search' ng-model="filter_tasks">
+			</div>
+		</caption>
+		<tr>
+	    <th>Task</th>
+	    <th>Date Completed</th>
+	  </tr>
+
+	  <tr ng-repeat="task in tasks | filter: filter_tasks | orderBy:'created_at'">
+	    <td>{{task.task}}</td>
+	    <td ng-bind="task.created_at | date: 'longDate'"></td> 
+	  </tr>
+
+	</table>
+
+	<!-- Your Jobs -->
+
+	<table style="width:30%" class="example3">
+		<caption><h2>Your Work</h2></caption>
+		<caption>
+			<div class="input-field col s12" id="search">
+				<input id="search" type="text" class="form-control" placeholder='search' ng-model="filter_jobs">
+			</div>
+		</caption>
+	  <tr>
+	    <th>Customer</th>
+	    <th>Job</th>
+	    <th>Date</th>
+	    <th>Total Hours</th>
+	  </tr>
+
+	  <tr ng-repeat="service in services | filter: filter_jobs | orderBy:'created_at'">
+	    <td>{{service.username}}</td>
+	    <td>{{service.reason}}</td>
+	    <td ng-bind="service.start_date | date: 'longDate'"></td>
+	    <td>{{service.hours}}</td>
+	  </tr>
+
+	</table>
+
+	<!-- People Who have worked for you -->
+
+	<table style="width:30%" class="example3">
+
+		<caption><h2>People Working For You</h2></caption>
+
+		<caption>
+			<div class="input-field col s12" id="search">
+				<input id="search" type="text" class="form-control" placeholder='search' ng-model="filter_appts">
+			</div>
+		</caption>
+
+		<tr>
+	    <th >Hired</th>
+	    <th >Job</th> 
+	    <th >Date</th>
+	    <th>Total Hours</th>
+	  </tr>
+
+	  <tr ng-repeat="appointment in appointments | filter: filter_appts| orderBy: ['start_date', 'start_time']">
+		<td>{{appointment.contractor}}</td>
+		<td >{{appointment.reason}}</td>
+		<td ng-bind="appointment.start_date | date: 'longDate'"></td>
+		<td>{{appointment.hours}}</td>
+	  </tr>
+
+	</table>
+
+</div>
